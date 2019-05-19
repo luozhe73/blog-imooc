@@ -7,7 +7,29 @@
 </head>
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
-
+<h3 th:text="${userModel.title}"></h3>
+<div>
+    <a href="/users/form.html" th:href="@{~/users/form}">添加用户</a>
+</div>
+<table border="1">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>NAME</td>
+        <td>EMAIL</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${userModel.userList.size()} eq 0">
+        <td colspan="3">没有用户信息</td>
+    </tr>
+    <tr th:each="user : ${userModel.userList}">
+        <td th:text="${user.id}"></td>
+        <td ><a th:href="@{'/users/'+${user.id}}" th:text="${user.name}"></a> </td>
+        <td th:text="${user.email}"></td>
+    </tr>
+    </tbody>
+</table>
 <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
