@@ -46,4 +46,10 @@ dependencies {
     // 添加 MySQL连接驱动 的依赖
     compile('mysql:mysql-connector-java:6.0.5')
     runtime('com.h2database:h2:1.4.193')
+
+    // 添加  Spring Data Elasticsearch 的依赖
+    compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
+
+    // 添加  JNA 的依赖
+    compile('net.java.dev.jna:jna:4.3.0')
 }
