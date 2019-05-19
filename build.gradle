@@ -19,10 +19,10 @@ dependencies {
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-}
+    
+    annotationProcessor 'org.projectlombok:lombok:1.18.2'
+    compileOnly 'org.projectlombok:lombok:1.18.2'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.2'
+    testCompileOnly 'org.projectlombok:lombok:1.18.2'
 
-
-buildscript{
-    ext['thymeleaf.version']='3.0.3.RELEASE'
-    ext['thymeleaf-layout-dialect.version']='2.2.0'
 }
