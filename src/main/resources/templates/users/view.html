@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultrap.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Thymeleaf in action</title>
+<head th:replace="~{fragments/header :: header}">
 </head>
 <body>
-<div th:replace="~{fragments/header :: header}"></div>
+<div class="container blog-content-container">
 <h3 th:text="${userModel.title}"></h3>
 <div>
     <p>ID:<strong><span th:text="${userModel.user.id}"></span></strong></p>
@@ -14,8 +12,9 @@
     <p>EMAIL:<strong><span th:text="${userModel.user.email}"></span></strong></p>
 </div>
 <div>
-    <a th:href="@{'/users/delete/'+${userModel.user.id}}">删除</a>
-    <a th:href="@{'/users/modify/'+${userModel.user.id}}">修改</a>
+    <a class="btn btn-default" th:href="@{'/users/delete/'+${userModel.user.id}}">删除</a>
+    <a class="btn btn-default" th:href="@{'/users/modify/'+${userModel.user.id}}">修改</a>
+</div>
 </div>
 <div th:replace="~{fragments/footer :: footer}"></div>
 </body>

@@ -1,13 +1,32 @@
-<!DOCTYPE html >
-<html xmlns:layout="http://www.ultrap.net.nz/thymeleaf/layout"
-      xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Thymeleaf in action</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+        
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div th:fragment="footer">
-    <a href="https://www.baidu.com">Welcome to baidu</a>
-</div>
+
+<footer class="blog-footer bg-inverse" data-th-fragment="footer">
+    <nav class="navbar navbar-inverse bg-inverse navbar-toggleable-md">
+    <a id="goToTop" href="#">
+        <i class="fa fa-chevron-up fa-3x" aria-hidden="true"></i>
+    </a>
+
+        <div class="container">
+
+            <p class="m-0 text-center text-white">© 2017 <a href="https://waylau.com">waylau.com</a></p>
+
+        </div>
+    </nav>
+</footer>
+
 </body>
 </html>
