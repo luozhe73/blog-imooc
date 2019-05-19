@@ -1,3 +1,18 @@
+// buildscript 代码块中脚本优先执行
+buildscript {
+
+    // 自定义  Hibernate 的版本
+    ext['hibernate.version'] = '5.2.8.Final'
+
+    // 使用了 Maven 的中央仓库（你也可以指定其他仓库）
+    repositories {
+        //mavenCentral()
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.1.5.RELEASE'
     id 'java'
@@ -25,4 +40,10 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.2'
     testCompileOnly 'org.projectlombok:lombok:1.18.2'
 
+    // 添加 Spring Data JPA 的依赖
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+
+    // 添加 MySQL连接驱动 的依赖
+    compile('mysql:mysql-connector-java:6.0.5')
+    runtime('com.h2database:h2:1.4.193')
 }

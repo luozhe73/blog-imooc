@@ -21,7 +21,7 @@ public class UserController {
      * @return
      */
     private List<User> getUserlist() {
-        return userRepository.listUser();
+        return (List<User>) userRepository.findAll();
     }
 
     /**
@@ -32,7 +32,7 @@ public class UserController {
      */
     @GetMapping
     public ModelAndView list(Model model) {
-        model.addAttribute("userList", userRepository.listUser());
+        model.addAttribute("userList", userRepository.findAll());
         model.addAttribute("title", "用户管理");
         return new ModelAndView("users/list", "userModel", model);
     }
@@ -46,7 +46,7 @@ public class UserController {
      */
     @GetMapping("{id}")
     public ModelAndView view(@PathVariable("id") Long id, Model model) {
-        User user = userRepository.getUserById(id);
+        User user = userRepository.findById(id).get();
         model.addAttribute("user", user);
         model.addAttribute("title", "查看用户");
         return new ModelAndView("users/view", "userModel", model);
@@ -60,7 +60,7 @@ public class UserController {
      */
     @GetMapping("/form")
     public ModelAndView createForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new User(null,null,null));
         model.addAttribute("title", "创建用户");
         return new ModelAndView("users/form", "userModel", model);
     }
@@ -68,7 +68,7 @@ public class UserController {
     @PostMapping
     public ModelAndView saveOrUpdateUser(User user){
 
-        user = userRepository.saveOrUpdateUser(user);
+        user = userRepository.save(user);
         return new ModelAndView("redirect:/users");
     }
 
@@ -79,7 +79,7 @@ public class UserController {
      */
     @GetMapping(value = "delete/{id}")
     public ModelAndView delete(@PathVariable("id") Long id, Model model) {
-        userRepository.deleteUser(id);
+        userRepository.deleteById(id);
 
         model.addAttribute("userList", getUserlist());
         model.addAttribute("title", "删除用户");
@@ -93,7 +93,7 @@ public class UserController {
      */
     @GetMapping(value = "modify/{id}")
     public ModelAndView modifyForm(@PathVariable("id") Long id, Model model) {
-        User user = userRepository.getUserById(id);
+        User user = userRepository.findById(id).get();
 
         model.addAttribute("user", user);
         model.addAttribute("title", "修改用户");
