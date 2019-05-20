@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-    private static final Long ROLE_USER_AUTHORITY_ID = 2L;
-
-
     @GetMapping("/")
     public String root() {
         return "redirect:/index";
@@ -25,6 +22,7 @@ public class MainController {
 
     /**
      * 获取登录界面
+     *
      * @return
      */
     @GetMapping("/login")
